@@ -4,11 +4,9 @@ import { fetchData } from '@/lib/actions'
 import { launchProps } from '@/types'
 import React, { useEffect, useState } from 'react'
 import { formatDate } from '../lib/utils';
-import { CgSpinnerTwoAlt } from 'react-icons/cg';
 import {
     Table,
     TableBody,
-    TableCaption,
     TableCell,
     TableHead,
     TableHeader,
