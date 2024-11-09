@@ -81,12 +81,10 @@ const Filtering = () => {
         }
     }
 
-    console.log(filteredLaunches)
-
     return (
         <div className='w-full'>
             <div className='flex items-center justify-between max-w-[690px] w-full mx-auto my-2'>
-                <Select onValueChange={handleStatus}>
+                <Select onValueChange={handleStatus} defaultValue='all'>
                     <SelectTrigger className="w-[150px]">
                         <SelectValue placeholder="Status" />
                     </SelectTrigger>
