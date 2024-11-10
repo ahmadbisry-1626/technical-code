@@ -3,7 +3,7 @@
 import { fetchData } from '@/lib/actions'
 import { cn, formatDate } from '@/lib/utils'
 import { launchProps } from '@/types'
-import React, { useEffect, useMemo, useState } from 'react'
+import React, { Suspense, useEffect, useMemo, useState } from 'react'
 import { format } from "date-fns"
 import {
     Table,
@@ -34,14 +34,17 @@ import { TbRocket } from "react-icons/tb";
 import { TbRocketOff } from "react-icons/tb";
 import { PiRocketFill } from "react-icons/pi";
 import { GrStatusUnknownSmall } from "react-icons/gr";
+import PaginationControl from './PaginationControl'
+import { usePathname, useRouter, useSearchParams } from 'next/navigation'
 
-const Sorting = () => {
+const PaginationComponent = () => {
     const [loading, setIsLoading] = useState(false)
     const [launch, setIsLaunch] = useState<launchProps[]>([])
     const [date, setDate] = React.useState<Date>()
     const [statusFilter, setStatusFilter] = useState<"success" | "failure" | "unknown" | null>(null);
     const [filteredLaunches, setFilteredLaunches] = useState<launchProps[]>([]);
     const [sorted, setSorted] = useState<"dateAsc" | "dateDesc" | "nameAsc" | "nameDesc" | null>(null)
+    const [page, setPage] = useState(1);
 
     useEffect(() => {
         const dataRocket = async () => {
@@ -73,12 +76,16 @@ const Sorting = () => {
     const handleStatus = (value: string) => {
         if (value === "success") {
             setStatusFilter("success")
+            setPage(1)
         } else if (value === "failure") {
             setStatusFilter("failure")
+            setPage(1)
         } else if (value === "unknown") {
             setStatusFilter("unknown")
+            setPage(1)
         } else {
             setStatusFilter(null)
+            setPage(1)
         }
     }
 
@@ -107,6 +114,22 @@ const Sorting = () => {
                         ? [...filteredLaunches].sort((a, b) => new Date(b.date_utc).getTime() - new Date(a.date_utc).getTime())
                         : filteredLaunches;
     }, [sorted, filteredLaunches]);
+
+    const itemsPerPage = 10;
+    const totalPages = Math.ceil(sortedData.length / itemsPerPage);
+
+    const onPageChange = (newPage: number) => {
+        setPage(newPage);
+    };
+
+    const paginatedData = useMemo(() => {
+        const startIndex = (page - 1) * itemsPerPage;
+        const endIndex = startIndex + itemsPerPage;
+        return sortedData.slice(startIndex, endIndex);
+    }, [page, sortedData]);
+
+    const hasPrevPage = page > 1;
+    const hasNextPage = page < totalPages;
 
     return (
         <div className='w-full'>
@@ -194,7 +217,7 @@ const Sorting = () => {
             </div>
 
 
-            <ScrollArea className='w-full h-[500px]'>
+            <ScrollArea className='w-full h-[420px]'>
                 <Table className='w-max mx-auto'>
                     <TableHeader className=''>
                         <TableRow>
@@ -225,8 +248,8 @@ const Sorting = () => {
                         </TableBody>
                     ) : (
                         <>
-                            {sortedData.length > 0 ? (
-                                sortedData.map((data, i) => {
+                            {paginatedData.length > 0 ? (
+                                paginatedData.map((data, i) => {
                                     return (
                                         <TableBody key={i}>
                                             <TableRow>
@@ -250,8 +273,24 @@ const Sorting = () => {
 
                 </Table>
             </ScrollArea>
+
+            {paginatedData.length > 0 ? (
+                !loading ? (
+                    <PaginationControl
+                        hasNextPage={hasNextPage}
+                        hasPrevPage={hasPrevPage}
+                        totalPages={totalPages}
+                        onPageChange={onPageChange}
+                        page={page}
+                    />
+                ) : (
+                    <Skeleton className='w-[200px] h-[30px] bg-gray-400 mx-auto mt-6' />
+                )
+            ) : (
+                null
+            )}
         </div>
     )
 }
 
-export default Sorting
+export default PaginationComponent

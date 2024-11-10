@@ -14,3 +14,7 @@ export type rocketName = {
     company: string;
     country: string;
 }
+
+export type searchParams = {
+     searchParams: { [key: string]: string | string[] | undefined }
+}

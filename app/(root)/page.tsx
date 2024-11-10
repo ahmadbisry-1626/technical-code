@@ -2,6 +2,7 @@ import FetchDataEditor from "@/components/FetchDataEditor";
 import Filtering from "@/components/Filtering";
 import HeroSection from "@/components/HeroSection";
 import LaunchData from "@/components/LaunchData";
+import PaginationComponent from "@/components/PaginationComponent";
 import Sorting from "@/components/Sorting";
 import Todolist from "@/components/Todolist";
 import { Button } from "@/components/ui/button";
@@ -71,13 +72,28 @@ export default async function Home() {
                         Sorting Data
                     </h1>
                     <Button className='bg-primary rounded-[12px] w-max mt-4 my-auto h-[45px]' asChild>
-                        <Link href="#sorting" className="">
-                            <span className="text-[20px] font-semibold">Done kan</span>
+                        <Link href="#pagination" className="">
+                            <span className="text-[20px] font-semibold">Pagination</span>
                         </Link>
                     </Button>
                 </div>
                 <Sorting />
             </section>
+
+            <section className="h-screen w-full flex items-center flex-col pt-24" id="pagination">
+                <div className="w-full max-w-[690px] flex justify-between">
+                    <h1 className="text-[52px] font-bold text-center">
+                        Pagination
+                    </h1>
+                    <Button className='bg-primary rounded-[12px] w-max mt-4 my-auto h-[45px]' asChild>
+                        <Link href="#pagination" className="">
+                            <span className="text-[20px] font-semibold">Done kan</span>
+                        </Link>
+                    </Button>
+                </div>
+                <PaginationComponent />
+            </section>
+
         </main>
     );
 }
