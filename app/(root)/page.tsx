@@ -2,6 +2,7 @@ import FetchDataEditor from "@/components/FetchDataEditor";
 import Filtering from "@/components/Filtering";
 import HeroSection from "@/components/HeroSection";
 import LaunchData from "@/components/LaunchData";
+import Sorting from "@/components/Sorting";
 import Todolist from "@/components/Todolist";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
@@ -41,7 +42,7 @@ export default async function Home() {
                     <h1 className="text-[52px] font-bold text-center">
                         Display Data
                     </h1>
-                    <Button className='bg-primary rounded-[12px] w-max h-[54px] mt-4' asChild>
+                    <Button className='bg-primary rounded-[12px] w-max mt-4 my-auto h-[45px]' asChild>
                         <Link href="#filtering" className="">
                             <span className="text-[20px] font-semibold">Filter kan</span>
                         </Link>
@@ -51,10 +52,31 @@ export default async function Home() {
             </section>
 
             <section className="h-screen w-full flex items-center flex-col pt-24" id="filtering">
-                <h1 className="text-[52px] font-bold text-center">
-                    Filtering Data
-                </h1>
+                <div className="w-full max-w-[690px] flex justify-between">
+                    <h1 className="text-[52px] font-bold text-center">
+                        Filtering Data
+                    </h1>
+                    <Button className='bg-primary rounded-[12px] w-max mt-4 my-auto h-[45px]' asChild>
+                        <Link href="#sorting" className="">
+                            <span className="text-[20px] font-semibold">Sorting kan</span>
+                        </Link>
+                    </Button>
+                </div>
                 <Filtering />
+            </section>
+
+            <section className="h-screen w-full flex items-center flex-col pt-24" id="sorting">
+                <div className="w-full max-w-[690px] flex justify-between">
+                    <h1 className="text-[52px] font-bold text-center">
+                        Sorting Data
+                    </h1>
+                    <Button className='bg-primary rounded-[12px] w-max mt-4 my-auto h-[45px]' asChild>
+                        <Link href="#sorting" className="">
+                            <span className="text-[20px] font-semibold">Done kan</span>
+                        </Link>
+                    </Button>
+                </div>
+                <Sorting />
             </section>
         </main>
     );

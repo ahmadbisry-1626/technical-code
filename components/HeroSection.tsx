@@ -4,7 +4,7 @@ import Link from 'next/link'
 
 const HeroSection = () => {
     return (
-        <section className="flex items-center justify-center flex-col gap-6 h-screen">
+        <section className="flex items-center justify-center flex-col gap-6 h-screen" id="hero">
             <div className="flex flex-col gap-2">
                 <h1 className="text-[52px] font-bold text-center">
                     Technical Code Interview

@@ -10,7 +10,7 @@ const Navbar = () => {
         <nav className='bg-black w-full shadow-[0_3px_10px_rgb(0,0,0,0.2)] py-4 fixed z-20'>
             <div className='flex items-center justify-between wrapper'>
                 <div className='flex items-center gap-4'>
-                    <Link href="/" className='text-white font-semibold text-[20px] md:text-[24px]'>
+                    <Link href="#hero" className='text-white font-semibold text-[20px] md:text-[24px]'>
                         Technical<span className='bg-primary text-black rounded-[8px]'>Code</span>
                     </Link>
                     <div className='bg-black-mate rounded-[12px] flex items-center px-2 border-2 border-transparent hover:border-primary transition-all duration-300 cursor-pointer'>
