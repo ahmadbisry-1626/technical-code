@@ -38,7 +38,7 @@ const SideNav = () => {
                 <div className='flex flex-col gap-1'>
                     {section.map(({ name, href }) => {
                         return (
-                            <Link href={href} key={name} className={`text-gray-400 font-regular text-[18px] ${activeSection === name && '!text-primary'} transition`}>
+                            <Link href={href} key={name} className={`text-gray-400 font-regular text-[18px] hover:text-primary ${activeSection === name && '!text-primary'} transition`}>
                                 {name}
                             </Link>
                         )

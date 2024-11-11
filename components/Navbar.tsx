@@ -1,17 +1,33 @@
-import React from 'react'
+"use client"
+
+import React, { useEffect, useState } from 'react'
 import { Input } from './ui/input'
-import { IoIosArrowRoundForward, IoMdSearch } from 'react-icons/io'
+import { IoMdSearch } from 'react-icons/io'
 import { FaGithub } from 'react-icons/fa'
 import Link from 'next/link'
 
 const Navbar = () => {
+    const [scrolled, setScrolled] = useState(false);
+
+    useEffect(() => {
+        const handleScroll = () => {
+            const isScrolled = window.scrollY > 0;
+            setScrolled(isScrolled);
+        };
+
+        window.addEventListener('scroll', handleScroll);
+
+        return () => {
+            window.removeEventListener('scroll', handleScroll);
+        };
+    }, []);
 
     return (
-        <nav className='bg-black w-full py-4 fixed z-20'>
+        <nav className={`bg-black w-full py-4 fixed z-20 ${scrolled && 'shadow-[0_3px_10px_rgb(0,0,0,0.2)]'} transition`}>
             <div className='flex items-center justify-between wrapper'>
-                <div className='flex items-center gap-4'>
+                <div className='flex items-center gap-6'>
                     <Link href="#hero" className='text-white font-semibold text-[20px] md:text-[24px]'>
-                        Technical<span className='bg-primary text-black rounded-[8px]'>Code</span>
+                        Dev<span className='bg-primary text-black rounded-[4px]'>Lens</span>
                     </Link>
                     <div className='bg-black-mate rounded-[12px] flex items-center px-2 border-2 border-transparent hover:border-primary transition-all duration-300 cursor-pointer'>
                         <IoMdSearch className='size-6 text-gray-500' />
