@@ -110,7 +110,7 @@ const Sorting = () => {
 
     return (
         <div className='w-full'>
-            <div className='flex items-center justify-between max-w-[690px] w-full mx-auto my-2'>
+            <div className='flex items-center justify-between w-full mx-auto my-2'>
                 <div className='flex items-center gap-3'>
                     <Select onValueChange={handleStatus} defaultValue='all'>
                         <SelectTrigger className="w-[150px]">
@@ -194,11 +194,11 @@ const Sorting = () => {
             </div>
 
 
-            <ScrollArea className='w-full h-[500px]'>
+            <ScrollArea className='h-[500px]'>
                 <Table className='w-max mx-auto'>
                     <TableHeader className=''>
                         <TableRow>
-                            <TableHead className="w-[250px]">Mission Name</TableHead>
+                            <TableHead className="w-[295px]">Mission Name</TableHead>
                             <TableHead className='w-[150px]'>Rocket Name</TableHead>
                             <TableHead className='w-[220px]'>Launch Date</TableHead>
                             <TableHead className="text-right">Status</TableHead>
@@ -209,10 +209,10 @@ const Sorting = () => {
                             {Array.from({ length: 10 }).map((_, i) => (
                                 <TableRow key={i} className='border-0'>
                                     <TableCell className="font-medium">
-                                        <Skeleton className='w-[250px] h-[30px] bg-gray-400' />
+                                        <Skeleton className='w-full h-[30px] bg-gray-400' />
                                     </TableCell>
                                     <TableCell>
-                                        <Skeleton className='w-[150px] h-[30px] bg-gray-400' />
+                                        <Skeleton className='w-full h-[30px] bg-gray-400' />
                                     </TableCell>
                                     <TableCell>
                                         <Skeleton className='w-[220px] h-[30px] bg-gray-400' />

@@ -21,7 +21,7 @@ interface PaginationControlProps {
 
 const PaginationControl = ({ page, hasNextPage, hasPrevPage, totalPages, onPageChange }: PaginationControlProps) => {
     return (
-        <Pagination className='mt-6'>
+        <Pagination className='mt-2'>
             <PaginationContent>
                 <PaginationItem>
                     {hasPrevPage ? (

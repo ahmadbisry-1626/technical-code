@@ -35,8 +35,9 @@ import { TbRocketOff } from "react-icons/tb";
 import { PiRocketFill } from "react-icons/pi";
 import { GrStatusUnknownSmall } from "react-icons/gr";
 import PaginationControl from './PaginationControl'
+import { Input } from './ui/input'
 
-const PaginationComponent = () => {
+const AdditionalFeatures = () => {
     const [loading, setIsLoading] = useState(false)
     const [launch, setIsLaunch] = useState<launchProps[]>([])
     const [date, setDate] = React.useState<Date>()
@@ -44,6 +45,7 @@ const PaginationComponent = () => {
     const [filteredLaunches, setFilteredLaunches] = useState<launchProps[]>([]);
     const [sorted, setSorted] = useState<"dateAsc" | "dateDesc" | "nameAsc" | "nameDesc" | null>(null)
     const [page, setPage] = useState(1);
+    const [query, setQuery] = useState("")
 
     useEffect(() => {
         const dataRocket = async () => {
@@ -67,10 +69,10 @@ const PaginationComponent = () => {
             if (!date) return true;
             const launchDate = formatDate(data.date_utc)
             return launchDate === formatDate(date)
-        })
+        }).filter((data) => data.name.toLowerCase().includes(query.toLowerCase()))
 
         setFilteredLaunches(filteredData)
-    }, [statusFilter, launch, date])
+    }, [statusFilter, launch, date, query])
 
     const handleStatus = (value: string) => {
         if (value === "success") {
@@ -131,11 +133,17 @@ const PaginationComponent = () => {
     const hasNextPage = page < totalPages;
 
     return (
-        <div className='w-full'>
-            <div className='flex items-center justify-between w-full mx-auto my-2'>
+        <div className='max-md:w-full'>
+            <Input
+                className='md:max-w-[740px] mb-3 mx-auto input bg-black-mate h-[40px]'
+                placeholder='Saerch by mission name'
+                onChange={(e) => setQuery(e.target.value)}
+            />
+
+            <div className='flex items-center justify-between max-w-[690px] w-full mx-auto my-2'>
                 <div className='flex items-center gap-3'>
                     <Select onValueChange={handleStatus} defaultValue='all'>
-                        <SelectTrigger className="w-[150px]">
+                        <SelectTrigger className="w-[150px] input bg-black-mate">
                             <SelectValue placeholder="Status" />
                             <ChevronDown className="h-4 w-4 opacity-50" />
                         </SelectTrigger>
@@ -216,11 +224,11 @@ const PaginationComponent = () => {
             </div>
 
 
-            <ScrollArea className='h-[420px]'>
+            <ScrollArea className='w-full h-[420px]'>
                 <Table className='w-max mx-auto'>
                     <TableHeader className=''>
                         <TableRow>
-                            <TableHead className="w-[295px]">Mission Name</TableHead>
+                            <TableHead className="w-[250px]">Mission Name</TableHead>
                             <TableHead className='w-[150px]'>Rocket Name</TableHead>
                             <TableHead className='w-[220px]'>Launch Date</TableHead>
                             <TableHead className="text-right">Status</TableHead>
@@ -237,7 +245,7 @@ const PaginationComponent = () => {
                                         <Skeleton className='w-full h-[25px] bg-gray-400' />
                                     </TableCell>
                                     <TableCell>
-                                        <Skeleton className='w-[220px] h-[25px] bg-gray-400' />
+                                        <Skeleton className='w-[200px] h-[25px] bg-gray-400' />
                                     </TableCell>
                                     <TableCell className="text-right">
                                         <Skeleton className='w-full h-[25px] bg-gray-400' />
@@ -249,10 +257,25 @@ const PaginationComponent = () => {
                         <>
                             {paginatedData.length > 0 ? (
                                 paginatedData.map((data, i) => {
+                                    const regex = new RegExp(`(${query})`, 'gi');
+                                    const parts = data.name.split(regex);
+
                                     return (
                                         <TableBody key={i}>
                                             <TableRow>
-                                                <TableCell className="font-medium">{data.name}</TableCell>
+                                                <TableCell className={`font-medium`}>
+                                                    {query ? (
+                                                        parts.map((part, i) => (
+                                                            part.toLowerCase() === query.toLowerCase() ? (
+                                                                <span key={i} className='text-primary'>{part}</span>
+                                                            ) : (
+                                                                part
+                                                            )
+                                                        ))
+                                                    ) : (
+                                                        <span>{data.name}</span>
+                                                    )}
+                                                </TableCell>
                                                 <TableCell>{data.rocketName}</TableCell>
                                                 <TableCell>{formatDate(data.date_utc)}</TableCell>
                                                 <TableCell className="text-right capitalize">{data.success === true ? "success" : data.success === null ? "unknown" : 'failure'}</TableCell>
@@ -292,4 +315,4 @@ const PaginationComponent = () => {
     )
 }
 
-export default PaginationComponent
+export default AdditionalFeatures

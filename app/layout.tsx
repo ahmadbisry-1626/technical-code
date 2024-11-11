@@ -102,7 +102,7 @@ export default function RootLayout({
     return (
         <html lang="en">
             <body
-                className={`${workSans.variable} overflow-y-hidden`}
+                className={`${workSans.variable}`}
             >
                 {children}
             </body>

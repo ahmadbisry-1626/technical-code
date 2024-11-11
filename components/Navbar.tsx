@@ -7,7 +7,7 @@ import Link from 'next/link'
 const Navbar = () => {
 
     return (
-        <nav className='bg-black w-full shadow-[0_3px_10px_rgb(0,0,0,0.2)] py-4 fixed z-20'>
+        <nav className='bg-black w-full py-4 fixed z-20'>
             <div className='flex items-center justify-between wrapper'>
                 <div className='flex items-center gap-4'>
                     <Link href="#hero" className='text-white font-semibold text-[20px] md:text-[24px]'>

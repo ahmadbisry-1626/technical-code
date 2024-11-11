@@ -32,12 +32,12 @@ const LaunchData = () => {
     }, [])
 
     return (
-        <div className='w-full'>
-            <ScrollArea className='w-full h-[500px]'>
-                <Table className='w-max mx-auto'>
+        <div className='max-md:w-full'>
+            <ScrollArea className='h-[500px]'>
+                <Table className='max-md:w-max mx-auto'>
                     <TableHeader className=''>
                         <TableRow>
-                            <TableHead className="w-[250px]">Mission Name</TableHead>
+                            <TableHead className="w-[295px]">Mission Name</TableHead>
                             <TableHead className='w-[150px]'>Rocket Name</TableHead>
                             <TableHead className='w-[220px]'>Launch Date</TableHead>
                             <TableHead className="text-right">Status</TableHead>
@@ -48,13 +48,13 @@ const LaunchData = () => {
                             {Array.from({ length: 10 }).map((_, i) => (
                                 <TableRow key={i} className='border-0'>
                                     <TableCell className="font-medium">
+                                        <Skeleton className='w-full h-[30px] bg-gray-400' />
+                                    </TableCell>
+                                    <TableCell>
+                                        <Skeleton className='w-full h-[30px] bg-gray-400' />
+                                    </TableCell>
+                                    <TableCell>
                                         <Skeleton className='w-[250px] h-[30px] bg-gray-400' />
-                                    </TableCell>
-                                    <TableCell>
-                                        <Skeleton className='w-[150px] h-[30px] bg-gray-400' />
-                                    </TableCell>
-                                    <TableCell>
-                                        <Skeleton className='w-[220px] h-[30px] bg-gray-400' />
                                     </TableCell>
                                     <TableCell className="text-right">
                                         <Skeleton className='w-full h-[30px] bg-gray-400' />
@@ -71,7 +71,7 @@ const LaunchData = () => {
                                             <TableCell className="font-medium">{data.name}</TableCell>
                                             <TableCell>{data.rocketName}</TableCell>
                                             <TableCell>{formatDate(data.date_utc)}</TableCell>
-                                            <TableCell className="text-right">{data.success === true ? "Succeed" : "Failed"}</TableCell>
+                                            <TableCell className="text-right capitalize">{data.success === true ? "success" : data.success === null ? "unknown" : 'failure'}</TableCell>
                                         </TableRow>
                                     </TableBody>
                                 )

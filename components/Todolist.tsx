@@ -5,7 +5,7 @@ import McOsCenah from './McOsCenah'
 
 const Todolist = () => {
     return (
-        <ScrollArea className="h-[400px] w-full">
+        <ScrollArea className="h-[400px]">
             <div className="w-full flex flex-col gap-4 items-center justify-center">
                 <div className="p-4 bg-black-mate rounded-[12px] relative max-w-3xl">
                     <McOsCenah />
