@@ -64,12 +64,6 @@ const SideNav = () => {
                             Yes. It adheres to the WAI-ARIA design pattern.
                         </AccordionContent>
                     </AccordionItem>
-                    <AccordionItem value="item-3">
-                        <AccordionTrigger>Data filtered</AccordionTrigger>
-                        <AccordionContent>
-                            Yes. It adheres to the WAI-ARIA design pattern.
-                        </AccordionContent>
-                    </AccordionItem>
                     <AccordionItem value="item-4">
                         <AccordionTrigger>Sorting and filtering</AccordionTrigger>
                         <AccordionContent>
