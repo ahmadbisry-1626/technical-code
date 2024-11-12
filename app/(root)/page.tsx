@@ -59,6 +59,9 @@ export default async function Home() {
                         <LaunchData />
 
                         <CodeSnippets code={codeDisplayData} />
+                        <span className="break-words mt-6 text-justify text-gray-300 max-md:text-sm tracking-wide">
+                            To display the launch data, I structured the component to prioritize efficient data handling and a smooth user experience. I use two separate state variables—one for the data itself (launch) and another for loading status (loading)—to manage rendering only when necessary, reducing unnecessary re-renders. By placing the data-fetching function inside useEffect and calling it only once with an empty dependency array, the component fetches data only on mount, minimizing API calls. I also manage loading state by toggling loading to true before the fetch and false afterward, allowing users to see a clear loading indicator as data is retrieved. This approach efficiently manages state, optimizes data fetching, and provides a responsive UI.
+                        </span>
                     </section>
 
                     <section className="md:min-h-screen w-full md:max-w-[740px] flex items-center flex-col pt-24" id="filtering">
@@ -75,6 +78,12 @@ export default async function Home() {
                         <Filtering />
 
                         <CodeSnippets code={codeFiltering} />
+                        <span className="break-words mt-6 text-justify text-gray-300 max-md:text-sm tracking-wide">
+                            For filtering the data, I structured the component to be highly responsive and focused on efficient filtering based on the user's inputs. I maintain states for statusFilter, date, and filteredLaunches, each allowing flexible and intuitive filtering options. The useEffect hook monitors changes in statusFilter, launch, and date, which triggers the filtering process only when these values update. This keeps the component efficient, applying filters in real time without extra rendering cycles.
+                        </span>
+                        <span className="break-words mt-6 text-justify text-gray-300 max-md:text-sm tracking-wide">
+                            To filter by status, I use a conditional check on statusFilter to ensure only launches matching the selected success status (or null for unknowns) are included. Then, a second filter checks for a specific date match if a date has been selected. By combining these two filter steps, I can manage complex filtering conditions without overwhelming the component's performance. The filteredLaunches state is updated only when the data or filters change, making the UI responsive and able to scale smoothly with different data sizes.
+                        </span>
                     </section>
 
                     <section className="md:min-h-screen w-full md:max-w-[740px] flex items-center flex-col pt-24" id="sorting">
@@ -91,6 +100,12 @@ export default async function Home() {
                         <Sorting />
 
                         <CodeSnippets code={codeSorting} />
+                        <span className="break-words mt-6 text-justify text-gray-300 max-md:text-sm tracking-wide">
+                            In this sorting component, I use useMemo instead of useEffect to optimize performance by ensuring that sorting only recalculates when necessary. useMemo caches the sorted result based on its dependencies, meaning it only recalculates when either sorted or filteredLaunches changes. This makes it highly efficient, as the sorted data is stored in memory and avoids re-sorting on every render, which is ideal for large data sets where frequent re-sorting could hurt performance.
+                        </span>
+                        <span className="break-words mt-6 text-justify text-gray-300 max-md:text-sm tracking-wide">
+                            Using useEffect here would be less efficient because it would trigger the sorting as a side effect and require an additional state to store the sorted result, potentially leading to extra re-renders. With useMemo, the sorted data is computed and returned directly within the component, allowing it to render the sorted data without additional state management. This approach keeps the component fast and minimizes unnecessary calculations, ensuring a smooth user experience even with frequent changes in sorting order.
+                        </span>
                     </section>
 
                     <section className="md:min-h-screen w-full md:max-w-[740px] flex items-center justify-center flex-col pt-24" id="pagination">
@@ -107,7 +122,17 @@ export default async function Home() {
                         <PaginationComponent />
 
                         <CodeSnippets code={codePagination} />
+                        <span className="break-words mt-6 text-justify text-gray-300 max-md:text-sm tracking-wide">
+                            In PaginationComponent, I handle the main pagination logic, breaking down data into manageable pages. First, I define itemsPerPage to limit the number of items shown per page and calculate totalPages to know the full range of available pages based on the length of sortedData. The paginatedData is computed using useMemo, slicing sortedData based on the current page and itemsPerPage so that the correct subset of items is rendered for each page.
+                        </span>
+                        <span className="break-words mt-6 text-justify text-gray-300 max-md:text-sm tracking-wide">
+                            By setting the page state, I can track the user's current page, and onPageChange lets me update this state easily when the user clicks to navigate. I also define hasPrevPage and hasNextPage to check if pagination controls should enable or disable for the previous or next page, respectively. This component then renders the correct page of data (paginatedData.map) along with the PaginationControl component, which manages the actual pagination buttons.
+                        </span>
+
                         <CodeSnippets code={codePaginationControl} />
+                        <span className="break-words mt-6 text-justify text-gray-300 max-md:text-sm tracking-wide">
+                            PaginationControl is a separate component focused on the navigation controls themselves, keeping the UI for pagination clean and modular. It renders buttons for moving to the previous or next page, using PaginationPrevious and PaginationNext elements. Each button checks if it should be active or not—hasPrevPage and hasNextPage determine if there's a previous or next page, respectively.
+                        </span>
                     </section>
 
                     <section className="md:min-h-screen w-full md:max-w-[740px] flex items-center flex-col pt-24 pb-20" id="search">
@@ -117,6 +142,12 @@ export default async function Home() {
                         <AdditionalFeatures />
 
                         <CodeSnippets code={codeSearchFunction} />
+                        <span className="break-words mt-6 text-justify text-gray-300 max-md:text-sm tracking-wide">
+                            The search feature uses a query state to store the user's input. Each time query updates, the useEffect re-runs, filtering through the launch data along with the other filters (such as date and status). This way, the search filters dynamically based on all conditions, giving the user a refined search experience.
+                        </span>
+                        <span className="break-words mt-6 text-justify text-gray-300 max-md:text-sm tracking-wide">
+                            By converting both query and each launch's name to lowercase, I ensure the search is case-insensitive, making it user-friendly and flexible. When the user types into the search Input, the component immediately updates the filteredLaunches state based on the new query, providing real-time search results. This setup keeps the code efficient, updating only when necessary, and makes the component intuitive, responsive, and able to handle complex search and filter combinations.
+                        </span>
                     </section>
                 </div>
 

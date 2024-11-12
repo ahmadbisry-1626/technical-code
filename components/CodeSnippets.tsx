@@ -6,7 +6,7 @@ import { ScrollArea } from './ui/scroll-area';
 const CodeSnippets = ({ code }: { code: string }) => {
     return (
         <ScrollArea className="h-[400px] md:max-w-3xl w-full overflow-auto mt-10 selection:bg-primary/30">
-            <SyntaxHighlighter language="typescript" style={a11yDark} customStyle={{ minWidth: "100%", borderRadius: '12px' }}>
+            <SyntaxHighlighter language="typescript" style={coldarkDark} customStyle={{ minWidth: "100%", borderRadius: '12px' }}>
                 {code}
             </SyntaxHighlighter>
         </ScrollArea>
