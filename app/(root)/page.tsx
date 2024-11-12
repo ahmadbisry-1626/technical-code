@@ -14,7 +14,7 @@ import Link from "next/link";
 
 export default async function Home() {
     return (
-        <main className="flex flex-col items-center justify-center w-full wrapper">
+        <main className="flex flex-col items-center justify-center w-full wrapper relative">
             <HeroSection />
 
             <div className="flex items-start gap-4 w-full">
@@ -46,7 +46,7 @@ export default async function Home() {
                     </section>
 
                     <section className="md:min-h-screen w-full md:max-w-[740px] flex items-center flex-col pt-24" id="display">
-                        <div className="w-full flex justify-between">
+                        <div className="w-full flex justify-between max-md:mb-3">
                             <h1 className="text-[24px] md:text-[42px] font-bold text-center">
                                 Display Data
                             </h1>
@@ -65,7 +65,7 @@ export default async function Home() {
                     </section>
 
                     <section className="md:min-h-screen w-full md:max-w-[740px] flex items-center flex-col pt-24" id="filtering">
-                        <div className="w-full flex justify-between">
+                        <div className="w-full flex justify-between max-md:mb-3">
                             <h1 className="text-[24px] md:text-[42px] font-bold text-center">
                                 Filtering Data
                             </h1>
@@ -87,7 +87,7 @@ export default async function Home() {
                     </section>
 
                     <section className="md:min-h-screen w-full md:max-w-[740px] flex items-center flex-col pt-24" id="sorting">
-                        <div className="w-full flex justify-between">
+                        <div className="w-full flex justify-between max-md:mb-3">
                             <h1 className="text-[24px] md:text-[42px] font-bold text-center">
                                 Sorting Data
                             </h1>
@@ -109,7 +109,7 @@ export default async function Home() {
                     </section>
 
                     <section className="md:min-h-screen w-full md:max-w-[740px] flex items-center justify-center flex-col pt-24" id="pagination">
-                        <div className="w-full flex justify-between">
+                        <div className="w-full flex justify-between max-md:mb-3">
                             <h1 className="text-[24px] md:text-[42px] font-bold text-center">
                                 Pagination
                             </h1>
@@ -136,7 +136,7 @@ export default async function Home() {
                     </section>
 
                     <section className="md:min-h-screen w-full md:max-w-[740px] flex items-center flex-col pt-24 pb-20" id="search">
-                        <h1 className="text-[24px] md:text-[42px] font-bold text-center">
+                        <h1 className="text-[24px] md:text-[42px] font-bold text-center max-md:mb-3">
                             Search Function
                         </h1>
                         <AdditionalFeatures />

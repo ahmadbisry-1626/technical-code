@@ -39,7 +39,7 @@ const Navbar = () => {
                 </div>
 
                 <div className='flex items-center gap-4'>
-                    <Link href="#" className='text-gray-500 hover:text-primary transition-all duration-300'>Get Started</Link>
+                    <Link href="#started" className='text-gray-500 hover:text-primary transition-all duration-300'>Get Started</Link>
                     <span className='text-gray-500'>|</span>
                     <Link href="https://github.com/ahmadbisry-1626/technical-code" target='blank'>
                         <FaGithub className='size-7 text-gray-500 hover:text-white transition-all duration-300' />
