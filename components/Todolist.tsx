@@ -1,7 +1,7 @@
 import React from 'react'
 import { ScrollArea } from './ui/scroll-area'
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
-import { oneDark } from 'react-syntax-highlighter/dist/esm/styles/prism';
+import { vscDarkPlus, a11yDark } from 'react-syntax-highlighter/dist/esm/styles/prism';
 
 const codeString = `// Fetch Data
 // Fetch data for recent SpaceX launches from https://api.spacexdata.com/v4/launches. This API provides a wealth of data on each launch, including the mission name, launch date, rocket name, and success status.
@@ -32,7 +32,7 @@ const codeString = `// Fetch Data
 const Todolist = () => {
     return (
         <ScrollArea className="h-[400px] md:max-w-3xl w-full overflow-auto">
-            <SyntaxHighlighter language="typescript" style={oneDark} customStyle={{ minWidth: "100%", borderRadius: '12px' }}>
+            <SyntaxHighlighter language="typescript" style={a11yDark} customStyle={{ minWidth: "100%", borderRadius: '12px' }}>
                 {codeString}
             </SyntaxHighlighter>
         </ScrollArea>

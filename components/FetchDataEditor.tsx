@@ -1,7 +1,7 @@
 import React from 'react'
 import { ScrollArea } from './ui/scroll-area'
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
-import { oneDark } from 'react-syntax-highlighter/dist/esm/styles/prism';
+import { vscDarkPlus, a11yDark } from 'react-syntax-highlighter/dist/esm/styles/prism';
 
 const codeString = `"use server"
 
@@ -50,7 +50,7 @@ const FetchDataEditor = () => {
 
     return (
         <ScrollArea className="h-[400px] md:max-w-3xl w-full overflow-auto">
-            <SyntaxHighlighter language="typescript" style={oneDark} customStyle={{ minWidth: "100%", borderRadius: '12px' }}>
+            <SyntaxHighlighter language="typescript" style={a11yDark} customStyle={{ minWidth: "100%", borderRadius: '12px' }}>
                 {codeString}
             </SyntaxHighlighter>
         </ScrollArea>
