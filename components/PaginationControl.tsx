@@ -42,14 +42,14 @@ const PaginationControl = ({ page, hasNextPage, hasPrevPage, totalPages, onPageC
     const pages = getPages()
 
     return (
-        <Pagination className='mt-2'>
-            <PaginationContent>
+        <Pagination className='mt-2 flex md:justify-end'>
+            <PaginationContent className='max-md:flex-wrap'>
                 <PaginationItem>
                     <PaginationPrevious
                         onClick={() => {
                             if (hasPrevPage) onPageChange(page - 1)
                         }}
-                        className={`select-none ${hasPrevPage ? 'opacity-100 cursor-pointer' : 'opacity-0'} transition`}
+                        className={`select-none ${hasPrevPage ? 'opacity-100 cursor-pointer' : 'opacity-0'} transition max-md:hidden`}
                     />
                 </PaginationItem>
                 {pages.map((p, index) => {
@@ -74,7 +74,7 @@ const PaginationControl = ({ page, hasNextPage, hasPrevPage, totalPages, onPageC
                         onClick={() => {
                             if (hasNextPage) onPageChange(page + 1)
                         }}
-                        className={`select-none ${hasNextPage ? 'opacity-100 cursor-pointer' : 'opacity-0'} transition`}
+                        className={`select-none ${hasNextPage ? 'opacity-100 cursor-pointer' : 'opacity-0'} transition max-md:hidden`}
                     />
                 </PaginationItem>
             </PaginationContent>

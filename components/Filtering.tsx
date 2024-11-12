@@ -83,9 +83,9 @@ const Filtering = () => {
 
     return (
         <div className='w-full'>
-            <div className='flex items-center justify-between mx-auto my-2'>
+            <div className='flex items-center justify-between mx-auto my-2 gap-2'>
                 <Select onValueChange={handleStatus} defaultValue='all'>
-                    <SelectTrigger className="w-[150px]">
+                    <SelectTrigger className="md:w-[150px] w-full">
                         <SelectValue placeholder="Status" />
                     </SelectTrigger>
                     <SelectContent>
@@ -121,7 +121,7 @@ const Filtering = () => {
                         <Button
                             variant={"outline"}
                             className={cn(
-                                "w-[220px] justify-start text-left font-normal text-black",
+                                "md:w-[220px] w-full justify-start text-left font-normal text-black",
                                 !date && "text-muted-foreground"
                             )}
                         >
@@ -142,10 +142,10 @@ const Filtering = () => {
 
 
             <ScrollArea className='h-[500px]'>
-                <Table className='w-max mx-auto'>
+                <Table className='w-max'>
                     <TableHeader className=''>
                         <TableRow>
-                            <TableHead className="w-[295px]">Mission Name</TableHead>
+                            <TableHead className="w-[250px] md:w-[295px]">Mission Name</TableHead>
                             <TableHead className='w-[150px]'>Rocket Name</TableHead>
                             <TableHead className='w-[220px]'>Launch Date</TableHead>
                             <TableHead className="text-right">Status</TableHead>

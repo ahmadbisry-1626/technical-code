@@ -133,17 +133,17 @@ const AdditionalFeatures = () => {
     const hasNextPage = page < totalPages;
 
     return (
-        <div className='max-md:w-full'>
+        <div className='w-full'>
             <Input
                 className='md:max-w-[740px] mb-3 mx-auto input bg-black-mate h-[40px]'
                 placeholder='Saerch by mission name'
                 onChange={(e) => setQuery(e.target.value)}
             />
 
-            <div className='flex items-center justify-between max-w-[690px] w-full mx-auto my-2'>
+            <div className='flex max-md:flex-wrap items-center justify-between w-full mx-auto my-2'>
                 <div className='flex items-center gap-3'>
                     <Select onValueChange={handleStatus} defaultValue='all'>
-                        <SelectTrigger className="w-[150px] input bg-black-mate">
+                        <SelectTrigger className="md:w-[150px] w-full input bg-black-mate">
                             <SelectValue placeholder="Status" />
                             <ChevronDown className="h-4 w-4 opacity-50" />
                         </SelectTrigger>
@@ -180,7 +180,7 @@ const AdditionalFeatures = () => {
                             <Button
                                 variant={"outline"}
                                 className={cn(
-                                    "w-[220px] justify-start text-left font-normal text-black",
+                                    "md:w-[220px] w-full justify-start text-left font-normal text-black",
                                     !date && "text-muted-foreground"
                                 )}
                             >
@@ -200,7 +200,7 @@ const AdditionalFeatures = () => {
                 </div>
 
                 <Select onValueChange={sortHandler}>
-                    <SelectTrigger className="w-max input !px-0 hover:text-primary text-[18px] font-medium">
+                    <SelectTrigger className="w-max input !px-0 hover:text-primary max-md:text-sm text-[18px] font-medium">
                         <SelectValue placeholder="Sort" className='' />
                     </SelectTrigger>
                     <SelectContent>
@@ -224,11 +224,11 @@ const AdditionalFeatures = () => {
             </div>
 
 
-            <ScrollArea className='w-full h-[420px]'>
+            <ScrollArea className='h-[420px]'>
                 <Table className='w-max mx-auto'>
                     <TableHeader className=''>
                         <TableRow>
-                            <TableHead className="w-[250px]">Mission Name</TableHead>
+                            <TableHead className="w-[250px] md:w-[290px]">Mission Name</TableHead>
                             <TableHead className='w-[150px]'>Rocket Name</TableHead>
                             <TableHead className='w-[220px]'>Launch Date</TableHead>
                             <TableHead className="text-right">Status</TableHead>
@@ -239,16 +239,16 @@ const AdditionalFeatures = () => {
                             {Array.from({ length: 9 }).map((_, i) => (
                                 <TableRow key={i} className='border-0'>
                                     <TableCell className="font-medium">
-                                        <Skeleton className='w-full h-[25px] bg-gray-400' />
+                                        <Skeleton className='w-full h-[30px] bg-gray-400' />
                                     </TableCell>
                                     <TableCell>
-                                        <Skeleton className='w-full h-[25px] bg-gray-400' />
+                                        <Skeleton className='w-full h-[30px] bg-gray-400' />
                                     </TableCell>
                                     <TableCell>
-                                        <Skeleton className='w-[200px] h-[25px] bg-gray-400' />
+                                        <Skeleton className='w-[220px] h-[30px] bg-gray-400' />
                                     </TableCell>
                                     <TableCell className="text-right">
-                                        <Skeleton className='w-full h-[25px] bg-gray-400' />
+                                        <Skeleton className='w-full h-[30px] bg-gray-400' />
                                     </TableCell>
                                 </TableRow>
                             ))}

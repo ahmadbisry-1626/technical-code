@@ -46,7 +46,7 @@ const SideNav = () => {
                 </div>
 
                 <div className='border-r-4 border-gray-500 relative'>
-                    <div className={`border-r-4 rounded-full border-primary h-[50px] absolute ${activeSection === "Rollkan" && 'translate-y-[20px]'} ${activeSection === "Display" && 'translate-y-[50px]'} ${activeSection === "Filtering" && 'translate-y-[80px]'} ${activeSection === "Sorting" && 'translate-y-[110px]'} ${activeSection === "Pagination" && 'translate-y-[140px]'} ${activeSection === "Search" && 'translate-y-[165px]'} top-0 transition z-10`} />
+                    <div className={`border-r-4 rounded-full border-primary h-[50px] absolute ${activeSection === "Fetch Data" && 'translate-y-[20px]'} ${activeSection === "Display" && 'translate-y-[50px]'} ${activeSection === "Filtering" && 'translate-y-[80px]'} ${activeSection === "Sorting" && 'translate-y-[110px]'} ${activeSection === "Pagination" && 'translate-y-[140px]'} ${activeSection === "Search" && 'translate-y-[165px]'} top-0 transition z-10`} />
                 </div>
             </div>
 
@@ -80,6 +80,12 @@ const SideNav = () => {
                         <AccordionTrigger>Search function</AccordionTrigger>
                         <AccordionContent>
                             Yes. It adheres to the WAI-ARIA design pattern.
+                        </AccordionContent>
+                    </AccordionItem>
+                    <AccordionItem value="item-7">
+                        <AccordionTrigger>About this website</AccordionTrigger>
+                        <AccordionContent>
+                        I made this website just for practice and to improve my data processing skills.
                         </AccordionContent>
                     </AccordionItem>
                 </Accordion>
