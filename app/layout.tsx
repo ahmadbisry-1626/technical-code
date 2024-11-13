@@ -2,47 +2,6 @@ import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
 
-// const kanit = localFont({
-//     src: [
-//         {
-//             path: "./fonts/Kanit-Black.tff",
-//             weight: "900",
-//             style: "normal",
-//         },
-//         {
-//             path: "./fonts/Kanit-ExtraBold.tff",
-//             weight: "800",
-//             style: "normal",
-//         },
-//         {
-//             path: "./fonts/Kanit-Bold.tff",
-//             weight: "700",
-//             style: "normal",
-//         },
-//         {
-//             path: "./fonts/Kanit-SemiBold.tff",
-//             weight: "600",
-//             style: "normal",
-//         },
-//         {
-//             path: "./fonts/Kanit-Medium.tff",
-//             weight: "500",
-//             style: "normal",
-//         },
-//         {
-//             path: "./fonts/Kanit-Regular.ttf",
-//             weight: "400",
-//             style: "normal",
-//         },
-//         {
-//             path: "./fonts/Kanit-Thin.tff",
-//             weight: "200",
-//             style: "normal",
-//         },
-//     ],
-//     variable: "--font-kanit"
-// })
-
 const workSans = localFont({
     src: [
         {

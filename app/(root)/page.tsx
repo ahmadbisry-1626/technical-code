@@ -1,3 +1,4 @@
+import AccordionComponent from "@/components/AccordionComponent";
 import AdditionalFeatures from "@/components/AdditionalFeatures";
 import CodeSnippets from "@/components/CodeSnippets";
 import FetchDataEditor from "@/components/FetchDataEditor";
@@ -135,7 +136,7 @@ export default async function Home() {
                         </span>
                     </section>
 
-                    <section className="md:min-h-screen w-full md:max-w-[740px] flex items-center flex-col pt-24 pb-20" id="search">
+                    <section className="md:min-h-screen w-full md:max-w-[740px] flex items-center flex-col pt-24 md:pb-20" id="search">
                         <h1 className="text-[24px] md:text-[42px] font-bold text-center max-md:mb-3">
                             Search Function
                         </h1>
@@ -149,6 +150,7 @@ export default async function Home() {
                             By converting both query and each launch's name to lowercase, I ensure the search is case-insensitive, making it user-friendly and flexible. When the user types into the search Input, the component immediately updates the filteredLaunches state based on the new query, providing real-time search results. This setup keeps the code efficient, updating only when necessary, and makes the component intuitive, responsive, and able to handle complex search and filter combinations.
                         </span>
                     </section>
+                    <AccordionComponent />
                 </div>
 
             </div>
