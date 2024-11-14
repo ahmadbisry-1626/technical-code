@@ -1,4 +1,4 @@
-export const section = [
+export const sectionAxios = [
     {
         name: "Get Started",
         href: "#started",
@@ -26,6 +26,47 @@ export const section = [
     {
         name: "Search",
         href: "#search",
+    },
+]
+export const sectionReactQuery = [
+    {
+        name: "Get Started",
+        href: "#started",
+    },
+    {
+        name: "Fetch Data",
+        href: "#rollkan",
+    },
+    {
+        name: "Display",
+        href: "#display",
+    },
+    {
+        name: "Filtering",
+        href: "#filtering",
+    },
+    {
+        name: "Sorting",
+        href: "#sorting",
+    },
+    {
+        name: "Pagination",
+        href: "#pagination",
+    },
+    {
+        name: "Data Handling",
+        href: "#dataHandling",
+    },
+]
+
+export const navLinks = [
+    {
+        name: "Axios",
+        href: "/"
+    },
+    {
+        name: "Axios + React Query",
+        href: "/react-query"
     },
 ]
 
@@ -204,6 +245,91 @@ const AdditionalFeatures = () => {
         <Input onChange={(e) => setQuery(e.target.value)}/>
 
         ...paginatedData.map
+    )
+}
+`
+export const installReactQuery = `npm install @tanstack/react-router
+// or
+pnpm add @tanstack/react-router
+// or
+yarn add @tanstack/react-router
+// or
+bun add @tanstack/react-router
+`
+
+export const codeProvider = `// providers.tsx
+"use client"
+
+import {
+    QueryClient,
+    QueryClientProvider,
+} from '@tanstack/react-query'
+import * as React from 'react'
+
+export function Providers({ children }: { children: React.ReactNode }) {
+    const [queryClient] = React.useState(() => new QueryClient());
+
+    return (
+        <QueryClientProvider client={queryClient}>
+            {children}
+        </QueryClientProvider>
+    )
+}`
+
+export const wrapperLayout = `// layout.tsx
+<html lang="en">
+    <body>
+        <Providers>
+            {children}
+        </Providers>
+     </body>
+</html>
+`
+
+export const newDataFetching = `// actions.ts
+
+"use server"
+
+import { apiClient } from "@/hooks"
+
+export const fetchLaunches = async (): Promise<launchProps[]> => {
+    const launchResponse = await apiClient.get<launchProps[]>('/launches')
+    const launches = launchResponse.data
+
+    const launchWithRocketNames = await Promise.all(
+        launches.map(async (data) => {
+            try {
+                const rocketResponse = await apiClient.get<rocketName>('/rockets/'$'{data.rocket}')
+                return {
+                    ...data,
+                    rocketName: rocketResponse.data.name,
+                    company: rocketResponse.data.company,
+                    country: rocketResponse.data.country
+                }
+            } catch (error) {
+                return { ...data, rocketName: "Unknown", company: "Unknown", country: "Unknown" }
+            }
+        })
+    )
+
+    return launchWithRocketNames
+}
+`
+
+export const customQueryHooks = `// hooks/queries.ts
+
+import { fetchLaunches } from "@/lib/actions"
+import { launchProps } from "@/types"
+import { useQuery } from "@tanstack/react-query"
+
+export const useLaunches = () => {
+    return useQuery<launchProps[], Error>(
+        {
+            queryKey: ['launches'],
+            queryFn: fetchLaunches,
+            staleTime: 5 * 60 * 1000,
+            retry: 2,
+        }
     )
 }
 `

@@ -1,5 +1,6 @@
 "use server"
 
+import { apiClient } from "@/hooks"
 import { launchProps, rocketName } from "@/types"
 import axios from "axios"
 
@@ -28,4 +29,27 @@ export const fetchData = async (): Promise<launchProps[]> => {
 
         return []
     }
+}
+
+export const fetchLaunches = async (): Promise<launchProps[]> => {
+    const launchResponse = await apiClient.get<launchProps[]>(`/launches`)
+    const launches = launchResponse.data
+
+    const launchWithRocketNames = await Promise.all(
+        launches.map(async (data) => {
+            try {
+                const rocketResponse = await apiClient.get<rocketName>(`/rockets/${data.rocket}`)
+                return {
+                    ...data,
+                    rocketName: rocketResponse.data.name,
+                    company: rocketResponse.data.company,
+                    country: rocketResponse.data.country
+                }
+            } catch (error) {
+                return { ...data, rocketName: "Unknown", company: "Unknown", country: "Unknown" }
+            }
+        })
+    )
+
+    return launchWithRocketNames
 }

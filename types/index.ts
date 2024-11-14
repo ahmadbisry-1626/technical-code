@@ -16,5 +16,12 @@ export type rocketName = {
 }
 
 export type searchParams = {
-     searchParams: { [key: string]: string | string[] | undefined }
+    searchParams: { [key: string]: string | string[] | undefined }
+}
+
+export type SectionProps = {
+    sectionItem: {
+        name: string,
+        href: string
+    }[]
 }

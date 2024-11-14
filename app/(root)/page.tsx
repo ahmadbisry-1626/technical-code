@@ -10,7 +10,7 @@ import SideNav from "@/components/SideNav";
 import Sorting from "@/components/Sorting";
 import Todolist from "@/components/Todolist";
 import { Button } from "@/components/ui/button";
-import { codeDisplayData, codeFiltering, codePagination, codePaginationControl, codeSearchFunction, codeSorting } from "@/constants";
+import { codeDisplayData, codeFiltering, codePagination, codePaginationControl, codeSearchFunction, codeSorting, sectionAxios } from "@/constants";
 import Link from "next/link";
 
 export default async function Home() {
@@ -19,7 +19,7 @@ export default async function Home() {
             <HeroSection />
 
             <div className="flex items-start gap-4 w-full">
-                <SideNav />
+                <SideNav sectionItem={sectionAxios}/>
 
                 <div className="flex flex-col items-center w-full justify-center max-md:w-full">
                     <section className="w-full flex flex-col items-center justify-center md:min-h-screen gap-2 pt-10 max-md:pt-24" id="started">
