@@ -43,7 +43,7 @@ const PaginationControl = ({ page, hasNextPage, hasPrevPage, totalPages, onPageC
 
     return (
         <Pagination className='mt-2 flex md:justify-end'>
-            <PaginationContent className='max-md:flex-wrap'>
+            <PaginationContent className={`max-md:flex-wrap ${!hasNextPage && 'md:translate-x-20'} transition`}>
                 <PaginationItem>
                     <PaginationPrevious
                         onClick={() => {
@@ -56,13 +56,13 @@ const PaginationControl = ({ page, hasNextPage, hasPrevPage, totalPages, onPageC
                     const isActive = p === page
 
                     return (
-                        <PaginationItem key={index}>
+                        <PaginationItem key={index} className='transition'>
                             {p === '...' ? (
                                 <PaginationEllipsis />
                             ) : (
                                 <PaginationLink onClick={() => {
                                     if (typeof p === 'number') onPageChange(p)
-                                }} className={`${p === page ? 'bg-primary hover:!bg-primary hover:text-white cursor-default' : 'hover:!bg-primary/70 hover:text-white cursor-pointer'} select-none`}>
+                                }} className={`${isActive ? 'bg-primary hover:!bg-primary hover:text-white cursor-default' : 'hover:!bg-primary/70 hover:text-white cursor-pointer'} select-none transition`}>
                                     {p}
                                 </PaginationLink>
                             )}

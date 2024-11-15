@@ -38,25 +38,13 @@ export const sectionReactQuery = [
         href: "#rollkan",
     },
     {
-        name: "Display",
-        href: "#display",
-    },
-    {
-        name: "Filtering",
-        href: "#filtering",
-    },
-    {
-        name: "Sorting",
-        href: "#sorting",
-    },
-    {
-        name: "Pagination",
-        href: "#pagination",
-    },
-    {
         name: "Data Handling",
         href: "#dataHandling",
     },
+    {
+        name: "Result",
+        href: "#result",
+    }
 ]
 
 export const navLinks = [
@@ -330,6 +318,138 @@ export const useLaunches = () => {
             staleTime: 5 * 60 * 1000,
             retry: 2,
         }
+    )
+}
+`
+
+export const codeDisplayDataReqctQuery = `"use client"
+
+import { useLaunches } from '@/hooks/queries';
+
+const DataHandling = () => {
+    const { data: launches, isLoading, isFetching } = useLaunches()
+
+    return (
+        {isLoading ? (
+            <Skeleton />
+        ): (
+            ...launches.map
+        )}
+    )
+}
+`
+
+export const codeFilteredData = `"use client"
+
+import React, { useMemo, useState } from 'react'
+import { useLaunches } from '@/hooks/queries'
+import { launchProps } from '@/types';
+
+const DataHandling = () => {
+    const { data: launches, isLoading, isFetching } = useLaunches()
+    const [filteredData, setFilteredData] = useState<launchProps[]>(launches ?? [])
+    const [query, setQuery] = useState('')
+    const [date, setDate] = React.useState<Date>()
+    const [status, setStatus] = useState<"success" | "failure" | "unknown" | null>(null)
+
+    ...previous code
+
+     useMemo(() => {
+        const filtered = launches?.filter((data) => {
+            return data.name.toLowerCase().includes(query.toLowerCase())
+        }).filter((data) => {
+            if (status === "success") return data.success === true
+            if (status === "failure") return data.success === false
+            if (status == "unknown") return data.success === null
+            return true; // if status is null
+        }).filter((data) => {
+            if (!date) return true // if date is null
+            return formatDate(data.date_utc) === formatDate(date)
+        })
+
+        setFilteredData(filtered ?? [])
+    }, [query, launches, status, date])
+
+    return (
+        ...filteredData.map
+    )
+}
+`
+
+export const codeSortedData = `"use client"
+
+import React, { useMemo, useState } from 'react'
+import { useLaunches } from '@/hooks/queries'
+import { launchProps } from '@/types';
+
+const DataHandling = () => {
+    const { data: launches, isLoading, isFetching } = useLaunches()
+    const [filteredData, setFilteredData] = useState<launchProps[]>(launches ?? [])
+    const [sort, setSort] = useState<"dateAsc" | "dateDesc" | "nameAsc" | "nameDesc" | null>(null)
+
+    ...previous code
+
+    const sortedData = useMemo(() => {
+        return sort === "nameAsc"
+            ? [...filteredData].sort((a, b) => a.name.localeCompare(b.name))
+            : sort === "nameDesc"
+                ? [...filteredData].sort((a, b) => b.name.localeCompare(a.name))
+                : sort === "dateAsc"
+                    ? [...filteredData].sort((a, b) => new Date(a.date_utc).getTime() - new Date(b.date_utc).getTime())
+                    : sort === "dateDesc"
+                        ? [...filteredData].sort((a, b) => new Date(b.date_utc).getTime() - new Date(a.date_utc).getTime())
+                        : filteredData
+    }, [filteredData, sort])
+
+    return (
+        ...sortedData.map
+    )
+}
+`
+
+export const codePaginationReactQuery = `"use client"
+
+import React, { useMemo, useState } from 'react'
+import { useLaunches } from '@/hooks/queries'
+import { launchProps } from '@/types';
+
+const DataHandling = () => {
+    const { data: launches, isLoading, isFetching } = useLaunches()
+    const [filteredData, setFilteredData] = useState<launchProps[]>(launches ?? [])
+    const [page, setPage] = useState(1)
+
+    ...previous code
+
+    const itemsPerPage = 10
+    const totalPages = Math.ceil(sortedData.length / itemsPerPage)
+
+    const pageChangeHandler = (newPage: number) => {
+        setPage(newPage)
+    }
+
+    const paginatedData = useMemo(() => {
+        const startIndex = (page - 1) * itemsPerPage
+        const endIndex = startIndex + itemsPerPage
+        return sortedData.slice(startIndex, endIndex)
+    }, [sortedData, page])
+
+    // check if page is greater than 1
+    const hasPrevPage = page > 1
+
+    // check if page is less than total pages
+    const hasNextPage = page < totalPages
+
+    return (
+        ...paginatedData.map
+
+        // Pagination control
+        <PaginationControl
+            hasNextPage={hasNextPage}
+            hasPrevPage={hasPrevPage}
+            totalPages={totalPages}
+            onPageChange={pageChangeHandler}
+            page={page}
+        />
     )
 }
 `

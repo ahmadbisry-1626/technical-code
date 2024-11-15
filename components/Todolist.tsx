@@ -32,7 +32,7 @@ const codeString = `// Fetch Data
 const Todolist = () => {
     return (
         <ScrollArea className="h-[400px] md:max-w-3xl w-full overflow-auto">
-            <SyntaxHighlighter language="typescript" style={vscDarkPlus} customStyle={{ minWidth: "100%", borderRadius: '12px' }}>
+            <SyntaxHighlighter language="typescript" style={vscDarkPlus} customStyle={{ minWidth: "100%", borderRadius: '12px', scrollbarWidth: 'none' }}>
                 {codeString}
             </SyntaxHighlighter>
         </ScrollArea>
