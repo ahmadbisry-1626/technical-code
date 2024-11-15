@@ -13,7 +13,7 @@ const page = () => {
                 <SideNav sectionItem={sectionReactQuery} />
 
                 <div className="flex flex-col items-center w-full justify-center max-md:w-full">
-                    <section className="md:min-h-screen w-full md:max-w-[740px] flex items-center flex-col pt-24" id="started">
+                    <section className="w-full md:max-w-[740px] flex items-center flex-col pt-24" id="started">
                         <h1 className="text-[24px] md:text-[42px] font-bold text-center">
                             Get Started
                         </h1>
@@ -21,7 +21,7 @@ const page = () => {
                         <InstallationReactQuery />
                     </section>
 
-                    <section className="md:min-h-screen w-full md:max-w-[740px] flex items-center flex-col pt-24" id="rollkan">
+                    <section className="w-full md:max-w-[740px] flex items-center flex-col pt-24" id="rollkan">
                         <h1 className="text-[24px] md:text-[42px] font-bold text-center -mb-3">
                             Data Fetching
                         </h1>
@@ -40,7 +40,7 @@ const page = () => {
                         </span>
                     </section>
 
-                    <section className="md:min-h-screen w-full md:max-w-[740px] flex items-center flex-col pt-24" id="dataHandling">
+                    <section className="w-full md:max-w-[740px] flex items-center flex-col pt-24" id="dataHandling">
                         <h1 className="text-[24px] md:text-[42px] font-bold text-center">
                             Data Handling
                         </h1>
@@ -94,7 +94,7 @@ const page = () => {
                         </div>
                     </section>
 
-                    <section className="md:min-h-screen w-full md:max-w-[740px] flex items-center flex-col pt-[70px] pb-10" id="result">
+                    <section className="w-full md:max-w-[740px] flex items-center flex-col pt-[70px] pb-10" id="result">
                         <h1 className="text-[24px] md:text-[42px] font-bold text-center mt-6 mb-2">
                             Here's the Result
                         </h1>

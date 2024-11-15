@@ -23,7 +23,7 @@ export default async function Home() {
                 <SideNav sectionItem={sectionAxios} />
 
                 <div className="flex flex-col items-center w-full justify-center max-md:w-full">
-                    <section className="w-full flex flex-col items-center justify-center md:min-h-screen gap-2 pt-10 max-md:pt-24" id="started">
+                    <section className="w-full flex flex-col items-center justify-center gap-2 pt-24" id="started">
                         <h1 className="text-[24px] md:text-[42px] font-bold text-center">
                             Todo list
                         </h1>
@@ -35,7 +35,7 @@ export default async function Home() {
                         </Button>
                     </section>
 
-                    <section className="w-full flex flex-col items-center justify-center md:h-screen gap-2 pt-10 max-md:pt-24" id="rollkan">
+                    <section className="w-full flex flex-col items-center justify-center gap-2 pt-24" id="rollkan">
                         <h1 className="text-[24px] md:text-[42px] font-bold text-center">
                             Fetch Data
                         </h1>
@@ -47,7 +47,7 @@ export default async function Home() {
                         </Button>
                     </section>
 
-                    <section className="md:min-h-screen w-full md:max-w-[740px] flex items-center flex-col pt-24" id="display">
+                    <section className="w-full md:max-w-[740px] flex items-center flex-col pt-24" id="display">
                         <div className="w-full flex justify-between max-md:mb-3">
                             <h1 className="text-[24px] md:text-[42px] font-bold text-center">
                                 Display Data
@@ -66,7 +66,7 @@ export default async function Home() {
                         </span>
                     </section>
 
-                    <section className="md:min-h-screen w-full md:max-w-[740px] flex items-center flex-col pt-24" id="filtering">
+                    <section className="w-full md:max-w-[740px] flex items-center flex-col pt-24" id="filtering">
                         <div className="w-full flex justify-between max-md:mb-3">
                             <h1 className="text-[24px] md:text-[42px] font-bold text-center">
                                 Filtering Data
@@ -88,7 +88,7 @@ export default async function Home() {
                         </span>
                     </section>
 
-                    <section className="md:min-h-screen w-full md:max-w-[740px] flex items-center flex-col pt-24" id="sorting">
+                    <section className="w-full md:max-w-[740px] flex items-center flex-col pt-24" id="sorting">
                         <div className="w-full flex justify-between max-md:mb-3">
                             <h1 className="text-[24px] md:text-[42px] font-bold text-center">
                                 Sorting Data
@@ -110,7 +110,7 @@ export default async function Home() {
                         </span>
                     </section>
 
-                    <section className="md:min-h-screen w-full md:max-w-[740px] flex items-center justify-center flex-col pt-24" id="pagination">
+                    <section className="w-full md:max-w-[740px] flex items-center justify-center flex-col pt-24" id="pagination">
                         <div className="w-full flex justify-between max-md:mb-3">
                             <h1 className="text-[24px] md:text-[42px] font-bold text-center">
                                 Pagination
@@ -137,7 +137,7 @@ export default async function Home() {
                         </span>
                     </section>
 
-                    <section className="md:min-h-screen w-full md:max-w-[740px] flex items-center flex-col pt-24 md:pb-20" id="search">
+                    <section className="w-full md:max-w-[740px] flex items-center flex-col pt-24 md:pb-20" id="search">
                         <h1 className="text-[24px] md:text-[42px] font-bold text-center max-md:mb-3">
                             Search Function
                         </h1>
