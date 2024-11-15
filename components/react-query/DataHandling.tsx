@@ -118,7 +118,10 @@ const DataHandling = () => {
             <Input
                 className='md:max-w-[740px] mb-3 mx-auto input bg-black-mate h-[40px]'
                 placeholder='Saerch by mission name'
-                onChange={(e) => setQuery(e.target.value)}
+                onChange={(e) => {
+                    setQuery(e.target.value)
+                    setPage(1)
+                }}
             />
 
             <div className='flex max-md:flex-wrap items-center justify-between w-full mx-auto my-2'>
