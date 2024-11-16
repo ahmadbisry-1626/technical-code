@@ -1,8 +1,6 @@
 "use client"
 
-import React from 'react'
-import { IoMdSearch } from 'react-icons/io'
-import { Input } from './ui/input'
+import React, { Suspense } from 'react'
 import { navLinks } from '@/constants'
 import { usePathname } from 'next/navigation'
 import Link from 'next/link'
@@ -19,7 +17,9 @@ const MobileNav = ({ open, setIsOpen }: NavMobileProps) => {
     return (
         <>
             <div className={`w-full bg-black fixed top-[60px] z-20 ${open ? 'translate-y-0' : '-translate-y-full'} transition wrapper !py-3 flex flex-col gap-6 shadow-lg`}>
-                <SearchFunctionMobile />
+                <Suspense>
+                    <SearchFunctionMobile />
+                </Suspense>
 
                 <div className={`flex flex-col gap-2 pb-4 ${open ? 'opacity-100' : 'opacity-0'} transition !duration-700`}>
                     <h2 className='text-gray-300 font-semibold'>

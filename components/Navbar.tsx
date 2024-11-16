@@ -1,6 +1,6 @@
 "use client"
 
-import React, { useEffect, useState } from 'react'
+import React, { Suspense, useEffect, useState } from 'react'
 import { Input } from './ui/input'
 import { IoMdSearch } from 'react-icons/io'
 import { FaGithub } from 'react-icons/fa'
@@ -58,7 +58,9 @@ const Navbar = () => {
                         <Link href="#hero" className='text-white font-semibold text-[20px] md:text-[24px]'>
                             DevLens
                         </Link>
-                        <SearchFunction />
+                        <Suspense>
+                            <SearchFunction />
+                        </Suspense>
                     </div>
 
                     <div className='flex items-center gap-4'>
