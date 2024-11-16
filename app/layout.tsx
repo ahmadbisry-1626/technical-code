@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
 import { Providers } from "./providers";
+import { QueryProvider } from "./QueryContext";
 
 const workSans = localFont({
     src: [
@@ -65,7 +66,9 @@ export default function RootLayout({
                 className={`${workSans.variable}`}
             >
                 <Providers>
-                    {children}
+                    <QueryProvider>
+                        {children}
+                    </QueryProvider>
                 </Providers>
             </body>
         </html>

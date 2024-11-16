@@ -1,6 +1,6 @@
 "use client"
 
-import React, { Suspense, useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { FaGithub } from 'react-icons/fa'
 import Link from 'next/link'
 import { HiMenuAlt4 } from "react-icons/hi";
@@ -57,9 +57,7 @@ const Navbar = () => {
                             DevLens
                         </Link>
 
-                        <Suspense>
-                            <SearchFunction />
-                        </Suspense>
+                        <SearchFunction />
                     </div>
 
                     <div className='flex items-center gap-4'>
