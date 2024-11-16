@@ -17,9 +17,7 @@ const MobileNav = ({ open, setIsOpen }: NavMobileProps) => {
     return (
         <>
             <div className={`w-full bg-black fixed top-[60px] z-20 ${open ? 'translate-y-0' : '-translate-y-full'} transition wrapper !py-3 flex flex-col gap-6 shadow-lg`}>
-                <Suspense>
-                    <SearchFunctionMobile />
-                </Suspense>
+                <SearchFunctionMobile />
 
                 <div className={`flex flex-col gap-2 pb-4 ${open ? 'opacity-100' : 'opacity-0'} transition !duration-700`}>
                     <h2 className='text-gray-300 font-semibold'>
@@ -42,7 +40,7 @@ const MobileNav = ({ open, setIsOpen }: NavMobileProps) => {
                 </div>
             </div>
 
-            <div className={`w-full h-screen bg-black/70 fixed z-10 top-0 ${open ? 'opacity-100' : 'opacity-0 -z-10'} transition ease-in-out`} onClick={() => setIsOpen(false)} />
+            <div className={`w-full h-screen bg-black/70 fixed z-10 top-0 ${open ? 'opacity-100' : 'opacity-0 -translate-y-full'} transition ease-in-out`} onClick={() => setIsOpen(false)} />
         </>
     )
 }

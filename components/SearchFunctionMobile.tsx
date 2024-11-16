@@ -1,34 +1,34 @@
 "use client"
 
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import { IoMdSearch } from 'react-icons/io'
 import { Input } from './ui/input'
-import { useRouter, useSearchParams } from 'next/navigation'
+import { usePathname, useRouter } from 'next/navigation'
 
 const SearchFunctionMobile = () => {
-    const router = useRouter()
-    const searchParams = useSearchParams()
-    const [searchTerm, setSearchTerm] = useState(searchParams.get("query") || "");
+    const router = useRouter();
+    const pathname = usePathname();
+    const [searchTerm, setSearchTerm] = useState("");
 
-    useEffect(() => {
-        const timeout = setTimeout(() => {
-            const params = new URLSearchParams(searchParams.toString());
-            if (searchTerm) {
-                params.set("query", searchTerm);
-            } else {
-                params.delete("query");
+    let timeout: NodeJS.Timeout;
+    const handleSearch = (query: string) => {
+        setSearchTerm(query);
+        if (timeout) clearTimeout(timeout);
+
+        timeout = setTimeout(() => {
+            const params = new URLSearchParams();
+            if (query) {
+                params.set("query", query);
             }
-            router.replace(`?${params.toString()}`)
-        }, 500)
-
-        return () => clearTimeout(timeout);
-    }, [searchTerm, searchParams, router]);
+            router.replace(`${pathname}?${params.toString()}`);
+        }, 300)
+    };
 
     return (
         <div className='flex flex-col gap-3'>
             <div className='bg-black-mate rounded-[12px] md:hidden flex items-center px-2 border-2 border-transparent hover:border-primary transition-all duration-300 cursor-pointer'>
                 <IoMdSearch className='size-7 text-gray-500' />
-                <Input defaultValue={searchTerm} className='input bg-transparent h-[40px] w-full' placeholder='Search...' onChange={(e) => setSearchTerm(e.target.value)} />
+                <Input defaultValue={searchTerm} className='input bg-transparent h-[40px] w-full' placeholder='Search...' onChange={(e) => handleSearch(e.target.value)} />
                 <div className='border border-gray-500 px-1 rounded-[8px]'>
                     <span className='text-sm text-gray-500'>Ctrl+k</span>
                 </div>

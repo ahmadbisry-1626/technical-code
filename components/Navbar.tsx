@@ -1,8 +1,6 @@
 "use client"
 
 import React, { Suspense, useEffect, useState } from 'react'
-import { Input } from './ui/input'
-import { IoMdSearch } from 'react-icons/io'
 import { FaGithub } from 'react-icons/fa'
 import Link from 'next/link'
 import { HiMenuAlt4 } from "react-icons/hi";
@@ -58,6 +56,7 @@ const Navbar = () => {
                         <Link href="#hero" className='text-white font-semibold text-[20px] md:text-[24px]'>
                             DevLens
                         </Link>
+
                         <Suspense>
                             <SearchFunction />
                         </Suspense>
