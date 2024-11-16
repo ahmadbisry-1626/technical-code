@@ -6,6 +6,7 @@ import { Input } from './ui/input'
 import { navLinks } from '@/constants'
 import { usePathname } from 'next/navigation'
 import Link from 'next/link'
+import SearchFunctionMobile from './SearchFunctionMobile'
 
 interface NavMobileProps {
     open: boolean
@@ -18,13 +19,7 @@ const MobileNav = ({ open, setIsOpen }: NavMobileProps) => {
     return (
         <>
             <div className={`w-full bg-black fixed top-[60px] z-20 ${open ? 'translate-y-0' : '-translate-y-full'} transition wrapper !py-3 flex flex-col gap-6 shadow-lg`}>
-                <div className='bg-black-mate rounded-[12px] md:hidden flex items-center px-2 border-2 border-transparent hover:border-primary transition-all duration-300 cursor-pointer'>
-                    <IoMdSearch className='size-7 text-gray-500' />
-                    <Input className='input bg-transparent h-[40px] w-full' placeholder='Search...' />
-                    <div className='border border-gray-500 px-1 rounded-[8px]'>
-                        <span className='text-sm text-gray-500'>Ctrl+k</span>
-                    </div>
-                </div>
+                <SearchFunctionMobile />
 
                 <div className={`flex flex-col gap-2 pb-4 ${open ? 'opacity-100' : 'opacity-0'} transition !duration-700`}>
                     <h2 className='text-gray-300 font-semibold'>
