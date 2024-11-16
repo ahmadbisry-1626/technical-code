@@ -53,7 +53,7 @@ const Navbar = () => {
                         <button onClick={() => setIsOpen(!open)} className='lg:hidden block'>
                             <HiMenuAlt4 className='text-white w-6 h-6 hover:text-primary transition' />
                         </button>
-                        <Link href="#hero" className='text-white font-semibold text-[20px] md:text-[24px]'>
+                        <Link href="/" className='text-white font-semibold text-[20px] md:text-[24px]'>
                             DevLens
                         </Link>
 

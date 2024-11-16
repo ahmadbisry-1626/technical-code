@@ -137,7 +137,7 @@ export default async function Home() {
                         </span>
                     </section>
 
-                    <section className="w-full md:max-w-[740px] flex items-center flex-col pt-24 md:pb-20" id="search">
+                    <section className="w-full md:max-w-[740px] flex items-center flex-col pt-24 md:pb-14" id="search">
                         <h1 className="text-[24px] md:text-[42px] font-bold text-center max-md:mb-3">
                             Search Function
                         </h1>
@@ -154,6 +154,11 @@ export default async function Home() {
                         <div className="mt-6 w-full items-start">
                             <Link href="/react-query" className="text-blue-500 hover:underline">
                                 Try data fetching with React Query
+                            </Link>
+                        </div>
+                        <div className="mt-3 w-full items-start">
+                            <Link href="/react-query" className="text-blue-500 hover:underline">
+                                Ghibli Studios API with axios and react query
                             </Link>
                         </div>
                     </section>

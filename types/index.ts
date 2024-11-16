@@ -8,6 +8,19 @@ export type launchProps = {
     country?: string;
 }
 
+export type ghibliProps = {
+    id: string;
+    title: string;
+    original_title: string;
+    image: string;
+    movie_banner: string;
+    description: string;
+    director: string;
+    release_date: string;
+    rt_score: string;
+    url: string;
+}
+
 export type rocketName = {
     id: string;
     name: string;

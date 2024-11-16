@@ -47,6 +47,25 @@ export const sectionReactQuery = [
     }
 ]
 
+export const sectionGhibliStudios = [
+    {
+        name: "Get Started",
+        href: "#started",
+    },
+    {
+        name: "Fetch Data",
+        href: "#rollkan",
+    },
+    {
+        name: "Data Handling",
+        href: "#dataHandling",
+    },
+    {
+        name: "Result",
+        href: "#result",
+    }
+]
+
 export const navLinks = [
     {
         name: "Axios",
@@ -56,6 +75,10 @@ export const navLinks = [
         name: "Axios + React Query",
         href: "/react-query"
     },
+    {
+        name: "Ghibli Studios",
+        href: "/ghibli-api"
+    }
 ]
 
 export const codeDisplayData = `"use client"

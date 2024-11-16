@@ -1,7 +1,7 @@
 "use server"
 
-import { apiClient } from "@/hooks"
-import { launchProps, rocketName } from "@/types"
+import { apiClient, ghibliCient } from "@/hooks"
+import { ghibliProps, launchProps, rocketName } from "@/types"
 import axios from "axios"
 
 export const fetchData = async (): Promise<launchProps[]> => {
@@ -52,4 +52,17 @@ export const fetchLaunches = async (): Promise<launchProps[]> => {
     )
 
     return launchWithRocketNames
+}
+
+export const fetchGhibli = async (): Promise<ghibliProps[]> => {
+    try {
+        const ghibliResponse = await ghibliCient.get<ghibliProps[]>(`/films`)
+        const movies = ghibliResponse.data
+
+        return movies
+    } catch (error) {
+        console.error("Error fetching data", error)
+    }
+
+    return []
 }

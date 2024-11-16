@@ -17,6 +17,7 @@ import { SectionProps } from '@/types'
 const SideNav = ({ sectionItem }: SectionProps) => {
     const [activeSection, setActiveSection] = useState<string>('');
     const pathname = usePathname()
+    const ghibliPage = pathname === '/ghibli-api'
 
     useEffect(() => {
         const handleScroll = () => {
@@ -37,21 +38,23 @@ const SideNav = ({ sectionItem }: SectionProps) => {
 
     return (
         <div className="sticky top-0 lg:flex flex-col gap-6 hidden pt-28 w-full max-w-[250px]">
-            <div className='flex justify-between'>
-                <div className='flex flex-col gap-1'>
-                    {sectionItem.map((data) => {
-                        return (
-                            <Link href={data.href} key={data.name} className={`text-gray-400 font-regular text-[18px] hover:text-primary ${activeSection === data.name && '!text-primary'} transition`}>
-                                {data.name}
-                            </Link>
-                        )
-                    })}
-                </div>
+            {!ghibliPage && (
+                <div className='flex justify-between'>
+                    <div className='flex flex-col gap-1'>
+                        {sectionItem.map((data) => {
+                            return (
+                                <Link href={data.href} key={data.name} className={`text-gray-400 font-regular text-[18px] hover:text-primary ${activeSection === data.name && '!text-primary'} transition`}>
+                                    {data.name}
+                                </Link>
+                            )
+                        })}
+                    </div>
 
-                <div className='border-r-4 border-gray-500 relative'>
-                    <div className={`border-r-4 rounded-full border-primary h-[50px] absolute ${activeSection === "Fetch Data" && 'translate-y-[20px]'} ${activeSection === "Display" && 'translate-y-[50px]'} ${activeSection === "Filtering" && 'translate-y-[80px]'} ${activeSection === "Sorting" && 'translate-y-[110px]'} ${activeSection === "Pagination" && 'translate-y-[140px]'} ${activeSection === "Search" && 'translate-y-[165px]'} ${activeSection === "Data Handling" && 'translate-y-[50px]'} ${activeSection === "Result" && 'translate-y-[70px]'} top-0 transition z-10`} />
+                    <div className='border-r-4 border-gray-500 relative'>
+                        <div className={`border-r-4 rounded-full border-primary h-[50px] absolute ${activeSection === "Fetch Data" && 'translate-y-[20px]'} ${activeSection === "Display" && 'translate-y-[50px]'} ${activeSection === "Filtering" && 'translate-y-[80px]'} ${activeSection === "Sorting" && 'translate-y-[110px]'} ${activeSection === "Pagination" && 'translate-y-[140px]'} ${activeSection === "Search" && 'translate-y-[165px]'} ${activeSection === "Data Handling" && 'translate-y-[50px]'} ${activeSection === "Result" && 'translate-y-[70px]'} top-0 transition z-10`} />
+                    </div>
                 </div>
-            </div>
+            )}
 
             <div className='flex flex-col gap-2'>
                 <h2 className='text-gray-400 text-[18px] font-semibold'>Data Handling</h2>
