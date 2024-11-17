@@ -14,7 +14,7 @@ const MovieDetails = ({ id }: { id: string }) => {
 
     return (
         <section className="w-full flex flex-col pt-20 md:pt-24 gap-3 pb-10" id="movieDetails">
-            <Link href="/ghibli-api" className='md:flex items-center gap-2 text-gray-400 hidden hover:text-primary transition'>
+            <Link href="/ghibli-api" className='md:flex items-center gap-2 text-gray-400 hidden hover:text-primary transition w-max'>
                 <IoIosArrowRoundBack className='size-5' />
                 <span>Go back to Ghibli Studios</span>
             </Link>
