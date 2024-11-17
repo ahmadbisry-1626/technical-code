@@ -40,7 +40,7 @@ const MobileNav = ({ open, setIsOpen }: NavMobileProps) => {
                 </div>
             </div>
 
-            <div className={`w-full h-screen bg-black/70 fixed z-10 top-0 ${open ? 'opacity-100' : 'opacity-0 -translate-y-full'} transition ease-in-out`} onClick={() => setIsOpen(false)} />
+            <div className={`w-full h-screen bg-black/70 fixed z-10 top-0 ${open ? 'opacity-100' : 'opacity-0 hidden'} transition ease-in-out`} onClick={() => setIsOpen(false)} />
         </>
     )
 }

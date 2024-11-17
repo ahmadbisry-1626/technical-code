@@ -66,6 +66,13 @@ export const sectionGhibliStudios = [
     }
 ]
 
+export const sectionGhibliDetails = [
+    {
+        name: "Movie Details",
+        href: "#movieDetails",
+    }
+]
+
 export const navLinks = [
     {
         name: "Axios",

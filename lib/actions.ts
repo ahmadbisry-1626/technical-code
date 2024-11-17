@@ -66,3 +66,16 @@ export const fetchGhibli = async (): Promise<ghibliProps[]> => {
 
     return []
 }
+
+export const fetchGhibliById = async (id: string): Promise<ghibliProps | null> => {
+    try {
+        const ghibliResponse = await ghibliCient.get<ghibliProps[]>(`/films?id=${id}`)
+        const movie = ghibliResponse.data[0]
+
+        return movie
+    } catch (error) {
+        console.log("Error fetching data", error)
+    }
+
+    return null
+}

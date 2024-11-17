@@ -19,6 +19,9 @@ export type ghibliProps = {
     release_date: string;
     rt_score: string;
     url: string;
+    producer: string;
+    running_time: string;
+    original_title_romanised: string;
 }
 
 export type rocketName = {
@@ -35,6 +38,6 @@ export type searchParams = {
 export type SectionProps = {
     sectionItem: {
         name: string,
-        href: string
+        href: string,
     }[]
 }
