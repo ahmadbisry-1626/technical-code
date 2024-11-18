@@ -9,15 +9,16 @@ import Link from 'next/link'
 import { Skeleton } from '../ui/skeleton'
 import { ghibliProps } from '@/types'
 import PaginationControl from '../PaginationControl'
+import { usePathname, useRouter } from 'next/navigation'
 
-const itemsperPage = 6
-
-const GhibliCard = () => {
-    const [page, setPage] = useState(1)
+const GhibliCard = ({ page, itemsPerPage }: { page: number, itemsPerPage: number }) => {
+    const [pageNumber, setPageNumber] = useState(page)
     const { data: movies, isLoading, isError } = useGhibli()
     const [search, setSearch] = useState("")
     const [filteredMovies, setFilteredMovies] = useState<ghibliProps[]>([])
     const [releaseYear, setReleaseYear] = useState<"yearAsc" | "yearDesc" | null>(null)
+    const router = useRouter()
+    const pathname = usePathname()
 
     useMemo(() => {
         const filtered = movies?.filter((movie) => {
@@ -35,20 +36,24 @@ const GhibliCard = () => {
                 : filteredMovies
     }, [releaseYear, filteredMovies])
 
-    const totalPages = Math.ceil(sortedMovies?.length / itemsperPage)
+    const totalPages = Math.ceil(sortedMovies?.length / itemsPerPage)
 
     const onPageChange = (newPage: number) => {
-        setPage(newPage)
+        setPageNumber(newPage)
+
+        const params = new URLSearchParams(window.location.search)
+        params.set('page', newPage.toString())
+        router.push(`${pathname}?${params.toString()}`)
     }
 
     const paginatedData = useMemo(() => {
-        const startIndex = (page - 1) * itemsperPage
-        const endIndex = startIndex + itemsperPage
+        const startIndex = (pageNumber - 1) * itemsPerPage
+        const endIndex = startIndex + itemsPerPage
         return sortedMovies?.slice(startIndex, endIndex)
-    }, [page, sortedMovies])
+    }, [pageNumber, sortedMovies])
 
-    const hasNextPage = page < totalPages
-    const hasPrevPage = page > 1
+    const hasNextPage = pageNumber < totalPages
+    const hasPrevPage = pageNumber > 1
 
     return (
         <>
@@ -77,8 +82,8 @@ const GhibliCard = () => {
                     Ghibli Movies
                 </h1>
                 <div className='flex items-center w-full gap-4'>
-                    <SearchGhibli search={search} setSearch={setSearch} setPage={setPage}/>
-                    <ReleaseYear releaseYear={releaseYear} setReleaseYear={setReleaseYear} setPage={setPage}/>
+                    <SearchGhibli search={search} setSearch={setSearch} setPage={setPageNumber}/>
+                    <ReleaseYear releaseYear={releaseYear} setReleaseYear={setReleaseYear} setPage={setPageNumber} />
                 </div>
 
                 <ul className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-7 md:gap-5'>
@@ -147,7 +152,7 @@ const GhibliCard = () => {
                                                 </span>
                                             </div>
                                         </div>
-                                        <Link href={`/ghibli-api/${movie.id}`} className='hover:underline transition text-blue-500 w-max'>Read more</Link>
+                                        <Link href={`/ghibli-api/${movie.id}?page=${pageNumber}`} className='hover:underline transition text-blue-500 w-max'>Read more</Link>
                                     </li>
                                 )
                             })
@@ -160,7 +165,7 @@ const GhibliCard = () => {
                 </ul>
 
                 <PaginationControl
-                    page={page}
+                    page={pageNumber}
                     totalPages={totalPages}
                     hasNextPage={hasNextPage}
                     hasPrevPage={hasPrevPage}

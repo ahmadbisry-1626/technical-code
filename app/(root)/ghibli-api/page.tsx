@@ -1,9 +1,14 @@
 import GhibliCard from '@/components/ghibli/GhibliCard'
 import SideNav from '@/components/SideNav'
 import { sectionGhibliStudios } from '@/constants'
+import { searchParams } from '@/types'
 import React from 'react'
 
-const page = () => {
+const page = ({searchParams}: searchParams) => {
+    const pageParam = searchParams?.page?.toString() || '1'
+    const page = parseInt(pageParam)
+    const itemsPerPage = 6
+
     return (
         <main className='flex flex-col items-center justify-center w-full wrapper relative'>
             <div className="flex items-start gap-7 w-full">
@@ -14,7 +19,7 @@ const page = () => {
                         Ghibli Studio API
                     </h1>
 
-                    <GhibliCard />
+                    <GhibliCard page={page} itemsPerPage={itemsPerPage}/>
                 </section>
             </div>
         </main>

@@ -56,22 +56,23 @@ const SideNav = ({ sectionItem }: SectionProps) => {
                 </div>
             )}
 
-            <div className='flex flex-col gap-2'>
-                <h2 className='text-gray-400 text-[18px] font-semibold'>Data Handling</h2>
-                {navLinks.map(({ name, href }) => {
-                    const isActive = pathname === href
-                    return (
-                        <Link href={href} key={name}>
-                            <span className={`text-gray-400 font-regular text-[18px] hover:text-primary ${isActive && '!text-primary'} transition`}>
-                                {name}
-                            </span>
-                        </Link>
-                    )
-                })}
-            </div>
+            <ScrollArea className='h-[320px] relative'>
+                <div className='bg-gradient-to-t from-black absolute h-[20px] w-full bottom-0' />
 
-            <ScrollArea className='h-[250px] relative'>
-                <div className='bg-gradient-to-t from-black absolute h-[30px] w-full bottom-0' />
+                <div className='flex flex-col gap-2 mb-4'>
+                    <h2 className='text-gray-400 text-[18px] font-semibold'>Data Handling</h2>
+                    {navLinks.map(({ name, href }) => {
+                        const isActive = pathname === href
+                        return (
+                            <Link href={href} key={name}>
+                                <span className={`text-gray-400 font-regular text-[18px] hover:text-primary ${isActive && '!text-primary'} transition`}>
+                                    {name}
+                                </span>
+                            </Link>
+                        )
+                    })}
+                </div>
+
                 <Accordion type="single" collapsible>
                     <AccordionItem value="item-2">
                         <AccordionTrigger>NextJS</AccordionTrigger>

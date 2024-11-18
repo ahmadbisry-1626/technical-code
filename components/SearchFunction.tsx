@@ -14,9 +14,11 @@ const SearchFunction = () => {
     const handleSearch = (query: string) => {
         setQuery(query);
 
-        const params = new URLSearchParams();
+        const params = new URLSearchParams(window.location.search);
         if (query) {
             params.set("query", query);
+        } else {
+            params.delete("query");
         }
         router.replace(`${pathname}?${params.toString()}`);
     };

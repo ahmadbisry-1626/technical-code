@@ -32,6 +32,7 @@ export type rocketName = {
 }
 
 export type searchParams = {
+    params: Promise<{ id: string }>
     searchParams: { [key: string]: string | string[] | undefined }
 }
 
