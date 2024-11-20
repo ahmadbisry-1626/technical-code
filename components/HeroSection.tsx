@@ -24,7 +24,7 @@ const HeroSection = () => {
                 </Button>
                 <Button className='bg-transparent border-2 border-white rounded-[12px] h-[45px] md:h-[54px] hover:bg-white hover:text-black' asChild>
                     <Link href="/documentation" className="flex items-center gap-1" target='blank'>
-                        <span className="text-[18px] md:text-[20px] font-semibold">Documentation</span>
+                        <span className="text-[18px] md:text-[20px] font-semibold">Github</span>
                         <IoIosArrowRoundForward className='!size-4 md:!size-6 -rotate-[30deg]' />
                     </Link>
                 </Button>
